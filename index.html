@@ -5,168 +5,371 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SunnyOSINT - Open Source Intelligence Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- styles unchanged -->
+    <style>
+        :root {
+            --color-bg: #FAFAF8;
+            --color-primary: #1A1A1A;
+            --color-accent: #FF6B35;
+            --color-secondary: #F7B32B;
+            --color-muted: #6B6B6B;
+            --color-light: #F5F5F3;
+            --serif: 'Instrument Serif', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--color-light);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .highlight {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        .services {
+            padding: 8rem 4rem;
+            background: var(--color-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(26, 26, 26, 0.08);
+        }
+
+        .service-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about {
+            padding: 8rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--color-primary);
+            color: var(--color-bg);
+            text-align: center;
+        }
+
+        footer {
+            background: var(--color-primary);
+            padding: 3rem 4rem;
+            color: var(--color-bg);
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Sunny<span>OSINT</span></div>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tool">Get Started</a></li>
-        </ul>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">🔍 Open-source intelligence toolkit</div>
-            <h1>OSINT work, <span class="highlight">without the busywork</span>.</h1>
-            <p>
-                SunnyOSINT is a practical OSINT toolkit built for people who actually do investigations.
-                It pulls together public data from multiple sources so you spend less time searching
-                and more time analyzing.
-            </p>
-            <div class="cta-buttons">
-                <a href="#tool" class="btn btn-primary">Get Started</a>
-                <a href="#features" class="btn btn-secondary">See what it does</a>
-            </div>
-        </div>
-        <div class="hero-decoration"></div>
-        <div class="hero-decoration-2"></div>
-    </section>
+<nav>
+    <div class="logo">Sunny<span>OSINT</span></div>
+    <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tool">Get Started</a></li>
+    </ul>
+</nav>
 
-    <section class="services" id="features">
-        <div class="section-header">
-            <div class="section-tag">Features</div>
-            <h2 class="section-title">Tools you’ll actually use</h2>
-            <p class="section-description">
-                SunnyOSINT focuses on common OSINT tasks and makes them faster,
-                repeatable, and easier to organize.
-            </p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>Social media analysis</h3>
-                <p>
-                    Collect public profile data, posts, and connections from major platforms.
-                    Useful for timelines, account linking, and basic relationship mapping.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Domain & infrastructure checks</h3>
-                <p>
-                    Look up subdomains, DNS records, WHOIS data, certificates, and past domain history
-                    to understand how an online service is set up.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📧</div>
-                <h3>Email research</h3>
-                <p>
-                    Check email validity, known breaches, common formats, and where an address
-                    appears publicly across the web.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🗂️</div>
-                <h3>Source aggregation</h3>
-                <p>
-                    Pull results from different OSINT sources into one place so you don’t have to
-                    keep juggling tabs and notes.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📷</div>
-                <h3>Image analysis</h3>
-                <p>
-                    Extract metadata, run reverse image searches, and check for possible locations
-                    or reuse of images across sites.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Automation</h3>
-                <p>
-                    Chain tasks together, rerun the same checks later, and export results for reports
-                    or further analysis.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="about-content">
-            <h2>Why SunnyOSINT exists</h2>
-            <p>
-                OSINT work usually means repeating the same searches across dozens of sites.
-                SunnyOSINT was built to reduce that repetition and keep results in one place.
-            </p>
-            <p>
-                It’s meant for researchers, analysts, and investigators who want control over
-                their tools instead of relying on closed platforms or black-box services.
-            </p>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Public data sources</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10k+</div>
-                    <div class="stat-label">Users</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Open source</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Runnable automation</div>
-                </div>
-            </div>
-        </div>
-        <div class="about-visual">
-            <div class="visual-card">
-                <h4>Local and private</h4>
-                <p>
-                    Searches run locally. Your data stays with you.
-                    Nothing is logged, tracked, or sent elsewhere.
-                </p>
-            </div>
-            <div class="visual-card">
-                <h4>Actively maintained</h4>
-                <p>
-                    New sources and fixes are added regularly to keep up with platform changes
-                    and shifting OSINT techniques.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="tool">
-        <h2>Start using SunnyOSINT</h2>
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">🔍 Open-source intelligence toolkit</div>
+        <h1>OSINT work <span class="highlight">without the grind</span>.</h1>
         <p>
-            Run the tool directly in your browser and start collecting data right away.
+            SunnyOSINT is a hands-on OSINT tool for people who actually investigate things.
+            It pulls public data from multiple places so you don’t have to jump between
+            tabs, scripts, and spreadsheets.
         </p>
-        <a href="#tool" class="btn btn-primary">Launch tool</a>
-    </section>
+        <div class="cta-buttons">
+            <a href="#tool" class="btn btn-primary">Start using it</a>
+            <a href="#features" class="btn btn-secondary">See features</a>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <div class="footer-content">
-            <div>
-                <div class="logo">Sunny<span>OSINT</span></div>
-                <p style="opacity: 0.6; margin-top: 0.5rem; font-size: 0.9rem;">
-                    © 2026 Sunny Corporation. All rights reserved.
-                </p>
-            </div>
-            <ul class="footer-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#tool">Get Started</a></li>
-                <li><a href="#">Docs</a></li>
-            </ul>
-         </div>
-    </footer>
+<section class="services" id="features">
+    <div class="section-header">
+        <div class="section-tag">Features</div>
+        <h2 class="section-title">What it helps with</h2>
+        <p class="section-description">
+            Common OSINT tasks, made faster and easier to repeat.
+        </p>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Social media research</h3>
+            <p>
+                Collect public profiles, posts, and connections to help build timelines
+                and link accounts across platforms.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Domain & infrastructure</h3>
+            <p>
+                Look up DNS records, subdomains, certificates, and ownership details
+                to understand how a service is set up.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📧</div>
+            <h3>Email lookups</h3>
+            <p>
+                Check whether addresses appear in public breaches, follow common
+                formatting patterns, and see where they surface online.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div>
+        <h2>Why this exists</h2>
+        <p>
+            OSINT usually means doing the same searches over and over again.
+            SunnyOSINT was built to cut down that repetition and keep everything
+            organized in one place.
+        </p>
+        <p>
+            It’s open-source, transparent, and meant to be understood—not a black box.
+        </p>
+    </div>
+</section>
+
+<section class="contact" id="tool">
+    <h2>Start investigating</h2>
+    <p>
+        Launch SunnyOSINT and start working with public data right away.
+    </p>
+    <a href="#tool" class="btn btn-primary">Launch tool</a>
+</section>
+
+<footer>
+    <div>
+        <div class="logo">Sunny<span>OSINT</span></div>
+        <p style="opacity:0.6;margin-top:.5rem;font-size:.9rem;">
+            © 2026 Sunny Corporation
+        </p>
+    </div>
+</footer>
+
 </body>
 </html>
