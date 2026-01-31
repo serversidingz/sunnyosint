@@ -47,18 +47,6 @@
             background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(26, 26, 26, 0.08);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .logo {
@@ -83,27 +71,6 @@
             color: var(--color-primary);
             font-weight: 500;
             font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
         }
 
         .hero {
@@ -118,18 +85,6 @@
         .hero-content {
             max-width: 800px;
             z-index: 2;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero-badge {
@@ -159,13 +114,14 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--color-muted);
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             max-width: 600px;
         }
 
         .cta-buttons {
             display: flex;
             gap: 1rem;
+            margin-top: 2rem;
         }
 
         .btn {
@@ -176,9 +132,7 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
         }
 
         .btn-primary {
@@ -186,21 +140,10 @@
             color: var(--color-bg);
         }
 
-        .btn-primary:hover {
-            background: var(--color-accent);
-            transform: translateY(-2px);
-        }
-
         .btn-secondary {
             background: transparent;
             color: var(--color-primary);
             border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-primary);
-            color: var(--color-bg);
-            transform: translateY(-2px);
         }
 
         .services {
@@ -239,6 +182,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
@@ -258,6 +203,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .contact {
@@ -287,15 +234,17 @@
 
 <section class="hero">
     <div class="hero-content">
-        <div class="hero-badge">🔍 Open-source intelligence toolkit</div>
-        <h1>OSINT work <span class="highlight">without the grind</span>.</h1>
+        <div class="hero-badge">🔍 Open-source intelligence tools</div>
+        <h1>Intelligence gathering <span class="highlight">made simple</span> and practical.</h1>
         <p>
-            SunnyOSINT is a hands-on OSINT tool for people who actually investigate things.
-            It pulls public data from multiple places so you don’t have to jump between
-            tabs, scripts, and spreadsheets.
+            SunnyOSINT helps you collect and organize public information without wasting time.
+            It brings common OSINT tasks into one place so you can focus on analysis instead of setup.
+        </p>
+        <p style="font-size:1rem;font-weight:600;">
+            We walk so you can <span style="color:var(--color-secondary);">run.</span>
         </p>
         <div class="cta-buttons">
-            <a href="#tool" class="btn btn-primary">Start using it</a>
+            <a href="#tool" class="btn btn-primary">Get started</a>
             <a href="#features" class="btn btn-secondary">See features</a>
         </div>
     </div>
@@ -304,9 +253,9 @@
 <section class="services" id="features">
     <div class="section-header">
         <div class="section-tag">Features</div>
-        <h2 class="section-title">What it helps with</h2>
+        <h2 class="section-title">What SunnyOSINT does</h2>
         <p class="section-description">
-            Common OSINT tasks, made faster and easier to repeat.
+            Tools for everyday OSINT work, built to be reused and combined.
         </p>
     </div>
 
@@ -315,17 +264,17 @@
             <div class="service-icon">📱</div>
             <h3>Social media research</h3>
             <p>
-                Collect public profiles, posts, and connections to help build timelines
+                Gather public posts, profiles, and connections to help build timelines
                 and link accounts across platforms.
             </p>
         </div>
 
         <div class="service-card">
             <div class="service-icon">🌐</div>
-            <h3>Domain & infrastructure</h3>
+            <h3>Domain and infrastructure</h3>
             <p>
-                Look up DNS records, subdomains, certificates, and ownership details
-                to understand how a service is set up.
+                Inspect DNS records, subdomains, certificates, and ownership details
+                to understand how an online service is structured.
             </p>
         </div>
 
@@ -333,8 +282,35 @@
             <div class="service-icon">📧</div>
             <h3>Email lookups</h3>
             <p>
-                Check whether addresses appear in public breaches, follow common
-                formatting patterns, and see where they surface online.
+                Check where an email address appears publicly, including known breaches
+                and common formatting patterns.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📷</div>
+            <h3>Image analysis</h3>
+            <p>
+                Extract metadata, run reverse searches, and check where images
+                have appeared before.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🗂️</div>
+            <h3>Data aggregation</h3>
+            <p>
+                Keep results from different sources together instead of scattered
+                across tabs and notes.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Automation</h3>
+            <p>
+                Re-run the same checks, chain tasks together, and export results
+                when you need them.
             </p>
         </div>
     </div>
@@ -344,20 +320,19 @@
     <div>
         <h2>Why this exists</h2>
         <p>
-            OSINT usually means doing the same searches over and over again.
-            SunnyOSINT was built to cut down that repetition and keep everything
-            organized in one place.
+            OSINT work often means repeating the same searches again and again.
+            SunnyOSINT was built to cut down that repetition and keep things organized.
         </p>
         <p>
-            It’s open-source, transparent, and meant to be understood—not a black box.
+            It’s open-source and transparent. You can see how it works and adjust it to your needs.
         </p>
     </div>
 </section>
 
 <section class="contact" id="tool">
-    <h2>Start investigating</h2>
+    <h2>Start using SunnyOSINT</h2>
     <p>
-        Launch SunnyOSINT and start working with public data right away.
+        Launch the tool and begin working with public data right away.
     </p>
     <a href="#tool" class="btn btn-primary">Launch tool</a>
 </section>
