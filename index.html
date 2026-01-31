@@ -16,14 +16,8 @@
             --serif: 'Instrument Serif', serif;
             --sans: 'DM Sans', sans-serif;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--sans);
             background: var(--color-bg);
@@ -31,7 +25,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -47,14 +40,8 @@
             animation: slideDown 0.6s ease-out;
         }
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         .logo {
             font-family: var(--serif);
@@ -62,9 +49,7 @@
             font-weight: 600;
             letter-spacing: -0.02em;
         }
-        .logo span {
-            color: var(--color-accent);
-        }
+        .logo span { color: var(--color-accent); }
         .nav-links {
             display: flex;
             gap: 3rem;
@@ -88,13 +73,9 @@
             background: var(--color-accent);
             transition: width 0.3s ease;
         }
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        /* Hero Section */
+        .nav-links a:hover { color: var(--color-accent); }
+        .nav-links a:hover::after { width: 100%; }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -109,14 +90,8 @@
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .hero-badge {
             display: inline-block;
@@ -126,46 +101,24 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             animation: fadeInUp 0.8s ease-out 0.3s backwards;
         }
         h1 {
             font-family: var(--serif);
             font-size: 4.5rem;
             line-height: 1.1;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
         }
-        .tagline {
-            font-family: var(--serif);
-            font-size: 2rem;
-            font-style: italic;
-            color: var(--color-muted);
-            margin-bottom: 1.8rem;
-            animation: fadeInUp 0.8s ease-out 0.45s backwards;
-        }
-        .subheadline {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            animation: fadeInUp 0.8s ease-out 0.5s backwards;
-        }
-        .subheadline .honey {
-            color: var(--color-secondary);
-            font-weight: 600;
-            font-style: italic;
-        }
-        .highlight {
-            color: var(--color-accent);
-            font-style: italic;
-        }
+        .highlight { color: var(--color-accent); font-style: italic; }
         .hero p {
             font-size: 1.25rem;
             color: var(--color-muted);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             max-width: 600px;
-            animation: fadeInUp 0.8s ease-out 0.55s backwards;
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
         }
         .cta-buttons {
             display: flex;
@@ -203,7 +156,6 @@
             color: var(--color-bg);
             transform: translateY(-2px);
         }
-        /* Decorative elements */
         .hero-decoration {
             position: absolute;
             right: -10%;
@@ -215,12 +167,8 @@
             animation: float 8s ease-in-out infinite;
         }
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-30px) scale(1.05);
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
         }
         .hero-decoration-2 {
             position: absolute;
@@ -232,7 +180,6 @@
             border-radius: 50%;
             animation: float 10s ease-in-out infinite 2s;
         }
-        /* Services Section */
         .services {
             padding: 8rem 4rem;
             background: var(--color-light);
@@ -293,9 +240,7 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(26, 26, 26, 0.1);
         }
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
+        .service-card:hover::before { transform: scaleX(1); }
         .service-icon {
             width: 60px;
             height: 60px;
@@ -316,7 +261,6 @@
             color: var(--color-muted);
             line-height: 1.7;
         }
-        /* About Section */
         .about {
             padding: 8rem 4rem;
             display: grid;
@@ -326,11 +270,21 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        .about-content h2 {
+        .about-header {
+            text-align: left;
+        }
+        .about-header h2 {
             font-family: var(--serif);
             font-size: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.6rem;
             letter-spacing: -0.02em;
+        }
+        .about-motto {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--color-muted);
+            margin-bottom: 2rem;
         }
         .about-content p {
             font-size: 1.1rem;
@@ -387,15 +341,8 @@
             background: var(--color-primary);
             animation: float 6s ease-in-out infinite 1s;
         }
-        .visual-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .visual-card p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        /* Contact Section */
+        .visual-card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .visual-card p { font-size: 0.9rem; opacity: 0.9; }
         .contact {
             padding: 8rem 4rem;
             background: var(--color-primary);
@@ -405,8 +352,13 @@
         .contact h2 {
             font-family: var(--serif);
             font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
+        }
+        .contact .honey {
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-style: italic;
         }
         .contact p {
             font-size: 1.2rem;
@@ -417,10 +369,7 @@
             background: var(--color-accent);
             color: var(--color-bg);
         }
-        .contact .btn-primary:hover {
-            background: var(--color-secondary);
-        }
-        /* Footer */
+        .contact .btn-primary:hover { background: var(--color-secondary); }
         footer {
             background: var(--color-primary);
             padding: 3rem 4rem;
@@ -443,63 +392,26 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        /* Responsive */
+        .footer-links a:hover { opacity: 1; }
         @media (max-width: 968px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-            .nav-links {
-                gap: 1.5rem;
-            }
-            .hero {
-                padding: 0 2rem;
-            }
-            h1 {
-                font-size: 3.5rem;
-            }
-            .tagline {
-                font-size: 1.6rem;
-            }
-            .subheadline {
-                font-size: 1.4rem;
-            }
-            .services, .contact {
-                padding: 5rem 2rem;
-            }
+            nav { padding: 1.5rem 2rem; }
+            .nav-links { gap: 1.5rem; }
+            .hero { padding: 0 2rem; }
+            h1 { font-size: 3.5rem; }
+            .services, .contact { padding: 5rem 2rem; }
             .about {
                 grid-template-columns: 1fr;
                 padding: 5rem 2rem;
                 gap: 4rem;
             }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
+            .section-title { font-size: 2.5rem; }
+            .cta-buttons { flex-direction: column; }
         }
         @media (max-width: 640px) {
-            .nav-links {
-                display: none;
-            }
-            h1 {
-                font-size: 2.8rem;
-            }
-            .tagline {
-                font-size: 1.4rem;
-            }
-            .subheadline {
-                font-size: 1.3rem;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            h1 { font-size: 2.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -512,12 +424,11 @@
             <li><a href="#tool">Get Started</a></li>
         </ul>
     </nav>
+
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">🔍 Open Source Intelligence Framework</div>
             <h1>Intelligence gathering <span class="highlight">made simple</span> and powerful.</h1>
-            <div class="tagline">We walk so you can run.</div>
-            <p class="subheadline"><span class="honey">Collect open-source intel without the manual grind.</span></p>
             <p>SunnyOSINT is a comprehensive OSINT framework for researchers, investigators, and security professionals. Automate reconnaissance, aggregate data sources, and uncover digital footprints.</p>
             <div class="cta-buttons">
                 <a href="#tool" class="btn btn-primary">Get Started</a>
@@ -527,6 +438,7 @@
         <div class="hero-decoration"></div>
         <div class="hero-decoration-2"></div>
     </section>
+
     <section class="services" id="features">
         <div class="section-header">
             <div class="section-tag">Core Features</div>
@@ -534,91 +446,37 @@
             <p class="section-description">From social media scraping to domain reconnaissance, SunnyOSINT handles the full spectrum of intelligence gathering.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>Social Media Intelligence</h3>
-                <p>Automated scraping and analysis across major platforms. Profile enumeration, relationship mapping, content archiving, and timeline reconstruction.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Domain Reconnaissance</h3>
-                <p>Subdomain enumeration, DNS records, WHOIS lookups, SSL certificate analysis, and historical domain data. Map entire infrastructure footprints.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📧</div>
-                <h3>Email Intelligence</h3>
-                <p>Email validation, breach database searches, pattern analysis, and corporate email format discovery. Track digital identities across platforms.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🗂️</div>
-                <h3>Data Aggregation</h3>
-                <p>Integrate multiple OSINT sources into unified reports. Public records, corporate filings, leaked databases, and web archives all in one place.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📷</div>
-                <h3>Image Intelligence</h3>
-                <p>Reverse image search, EXIF data extraction, geolocation analysis, and facial recognition integration. Turn photos into actionable intelligence.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Automation Framework</h3>
-                <p>Build custom OSINT workflows with our Python API. Schedule tasks, chain modules, export results, and integrate with your existing security stack.</p>
-            </div>
+            
+            <div class="service-card">...</div>
+            
         </div>
     </section>
+
     <section class="about" id="about">
         <div class="about-content">
-            <h2>Built for investigators and researchers</h2>
+            <div class="about-header">
+                <h2>Built for investigators and researchers</h2>
+                <div class="about-motto">We walk so you can run.</div>
+            </div>
             <p>SunnyOSINT was created to streamline the intelligence gathering process. What used to take hours of manual searching across dozens of platforms now happens in minutes.</p>
             <p>Our framework combines powerful automation with an intuitive interface. Whether you're conducting due diligence, investigating threats, or researching targets, SunnyOSINT gives you the data you need.</p>
             <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Data Sources</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">Active Users</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Open Source</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Automated Scanning</div>
-                </div>
+                
             </div>
         </div>
         <div class="about-visual">
-            <div class="visual-card">
-                <h4>Privacy Focused</h4>
-                <p>All processing happens locally. Your investigations stay private. We never collect, store, or transmit your search data to third parties.</p>
-            </div>
-            <div class="visual-card">
-                <h4>Always Evolving</h4>
-                <p>New data sources added monthly. Active development community. Regular updates to adapt to platform changes and emerging OSINT techniques.</p>
-            </div>
+            
         </div>
     </section>
+
     <section class="contact" id="tool">
-        <h2>Ready to start gathering intelligence?</h2>
+        <h2><span class="honey">Collect open-source intel without the manual grind.</span></h2>
         <p>Use SunnyOSINT directly in your browser. No installation required.</p>
         <a href="#tool" class="btn btn-primary">Get Started</a>
     </section>
+
     <footer>
-        <div class="footer-content">
-            <div>
-                <div class="logo">Sunny<span>OSINT</span></div>
-                <p style="opacity: 0.6; margin-top: 0.5rem; font-size: 0.9rem;">© 2026 Sunny Corporation. All rights reserved.</p>
-            </div>
-            <ul class="footer-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#tool">Get Started</a></li>
-                <li><a href="#">Documentation</a></li>
-            </ul>
-         </div>
+        
     </footer>
 </body>
 </html>
