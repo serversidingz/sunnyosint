@@ -6,7 +6,6 @@
     <title>SunnyOSINT - Open Source Intelligence Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* unchanged CSS – keeping your original styles */
         :root {
             --color-bg: #FAFAF8;
             --color-primary: #1A1A1A;
@@ -17,7 +16,491 @@
             --serif: 'Instrument Serif', serif;
             --sans: 'DM Sans', sans-serif;
         }
-        /* ... rest of your CSS remains identical ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--sans);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+            animation: slideDown 0.6s ease-out;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .logo span {
+            color: var(--color-accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--color-light);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+        h1 {
+            font-family: var(--serif);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        .tagline {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--color-muted);
+            margin-bottom: 1.8rem;
+            animation: fadeInUp 0.8s ease-out 0.45s backwards;
+        }
+        .subheadline {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+        .subheadline .honey {
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-style: italic;
+        }
+        .highlight {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.55s backwards;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-bg);
+        }
+        .btn-primary:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+        /* Decorative elements */
+        .hero-decoration {
+            position: absolute;
+            right: -10%;
+            top: 20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+        .hero-decoration-2 {
+            position: absolute;
+            left: -5%;
+            bottom: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(247, 179, 43, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        /* Services Section */
+        .services {
+            padding: 8rem 4rem;
+            background: var(--color-light);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .section-tag {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--color-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(26, 26, 26, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(26, 26, 26, 0.1);
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-card p {
+            color: var(--color-muted);
+            line-height: 1.7;
+        }
+        /* About Section */
+        .about {
+            padding: 8rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .about-content h2 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .stat-item {
+            padding: 2rem;
+            background: var(--color-light);
+            border-radius: 12px;
+        }
+        .stat-number {
+            font-family: var(--serif);
+            font-size: 3rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        .stat-label {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        .about-visual {
+            position: relative;
+            height: 500px;
+        }
+        .visual-card {
+            position: absolute;
+            background: var(--color-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            color: var(--color-bg);
+        }
+        .visual-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+            animation: float 6s ease-in-out infinite;
+        }
+        .visual-card:nth-child(2) {
+            bottom: 0;
+            right: 0;
+            width: 70%;
+            height: 240px;
+            background: var(--color-primary);
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        .visual-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .visual-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--color-primary);
+            color: var(--color-bg);
+            text-align: center;
+        }
+        .contact h2 {
+            font-family: var(--serif);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+        .contact .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+        .contact .btn-primary:hover {
+            background: var(--color-secondary);
+        }
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            padding: 3rem 4rem;
+            color: var(--color-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--color-bg);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .hero {
+                padding: 0 2rem;
+            }
+            h1 {
+                font-size: 3.5rem;
+            }
+            .tagline {
+                font-size: 1.6rem;
+            }
+            .subheadline {
+                font-size: 1.4rem;
+            }
+            .services, .contact {
+                padding: 5rem 2rem;
+            }
+            .about {
+                grid-template-columns: 1fr;
+                padding: 5rem 2rem;
+                gap: 4rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .tagline {
+                font-size: 1.4rem;
+            }
+            .subheadline {
+                font-size: 1.3rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -29,103 +512,100 @@
             <li><a href="#tool">Get Started</a></li>
         </ul>
     </nav>
-
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">🔍 OSINT Framework</div>
-            <h1>Collect open-source intel without the manual grind.</h1>
-            <p>SunnyOSINT pulls together the tools researchers, investigators, and security folks actually use every day. Run recon, combine sources, and track digital trails faster.</p>
+            <div class="hero-badge">🔍 Open Source Intelligence Framework</div>
+            <h1>Intelligence gathering <span class="highlight">made simple</span> and powerful.</h1>
+            <div class="tagline">We walk so you can run.</div>
+            <p class="subheadline"><span class="honey">Collect open-source intel without the manual grind.</span></p>
+            <p>SunnyOSINT is a comprehensive OSINT framework for researchers, investigators, and security professionals. Automate reconnaissance, aggregate data sources, and uncover digital footprints.</p>
             <div class="cta-buttons">
-                <a href="#tool" class="btn btn-primary">Try It Now</a>
-                <a href="#features" class="btn btn-secondary">See What It Does</a>
+                <a href="#tool" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">View Features</a>
             </div>
         </div>
         <div class="hero-decoration"></div>
         <div class="hero-decoration-2"></div>
     </section>
-
     <section class="services" id="features">
         <div class="section-header">
-            <div class="section-tag">WHAT IT DOES</div>
-            <h2 class="section-title">The main pieces</h2>
-            <p class="section-description">It covers the usual OSINT tasks — from social profiles to domains and images — so you don't have to jump between ten browser tabs.</p>
+            <div class="section-tag">Core Features</div>
+            <h2 class="section-title">Comprehensive OSINT Capabilities</h2>
+            <p class="section-description">From social media scraping to domain reconnaissance, SunnyOSINT handles the full spectrum of intelligence gathering.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">📱</div>
-                <h3>Social Media</h3>
-                <p>Grab profiles, connections, posts, and timelines from the big platforms. Archive what matters before it disappears.</p>
+                <h3>Social Media Intelligence</h3>
+                <p>Automated scraping and analysis across major platforms. Profile enumeration, relationship mapping, content archiving, and timeline reconstruction.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🌐</div>
-                <h3>Domains & Infrastructure</h3>
-                <p>Find subdomains, check DNS, WHOIS, certificates, and old records. See what infrastructure someone actually controls.</p>
+                <h3>Domain Reconnaissance</h3>
+                <p>Subdomain enumeration, DNS records, WHOIS lookups, SSL certificate analysis, and historical domain data. Map entire infrastructure footprints.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📧</div>
-                <h3>Email Checks</h3>
-                <p>Verify addresses, search breach dumps, spot patterns, guess corporate formats. Link emails back to people and companies.</p>
+                <h3>Email Intelligence</h3>
+                <p>Email validation, breach database searches, pattern analysis, and corporate email format discovery. Track digital identities across platforms.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🗂️</div>
-                <h3>Pull Everything Together</h3>
-                <p>Combine results from public records, company filings, leaks, archives. One report instead of scattered notes.</p>
+                <h3>Data Aggregation</h3>
+                <p>Integrate multiple OSINT sources into unified reports. Public records, corporate filings, leaked databases, and web archives all in one place.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📷</div>
-                <h3>Images & Photos</h3>
-                <p>Reverse search, pull EXIF, estimate locations, run basic face matches when needed. Photos often reveal more than text.</p>
+                <h3>Image Intelligence</h3>
+                <p>Reverse image search, EXIF data extraction, geolocation analysis, and facial recognition integration. Turn photos into actionable intelligence.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚙️</div>
-                <h3>Build Your Own Workflows</h3>
-                <p>Use the Python API to chain tasks, schedule runs, export data, hook into your other tools. Script what you do repeatedly.</p>
+                <h3>Automation Framework</h3>
+                <p>Build custom OSINT workflows with our Python API. Schedule tasks, chain modules, export results, and integrate with your existing security stack.</p>
             </div>
         </div>
     </section>
-
     <section class="about" id="about">
         <div class="about-content">
-            <h2>Made for people who actually do this work</h2>
-            <p>Hours of clicking around become minutes. That's the only goal.</p>
-            <p>No cloud nonsense — everything stays on your machine. No accounts, no tracking, no uploaded targets.</p>
+            <h2>Built for investigators and researchers</h2>
+            <p>SunnyOSINT was created to streamline the intelligence gathering process. What used to take hours of manual searching across dozens of platforms now happens in minutes.</p>
+            <p>Our framework combines powerful automation with an intuitive interface. Whether you're conducting due diligence, investigating threats, or researching targets, SunnyOSINT gives you the data you need.</p>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number">Local-first</div>
-                    <div class="stat-label">Your data never leaves</div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Data Sources</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Open Source</div>
-                    <div class="stat-label">Read, fork, change it</div>
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Active Users</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Regular updates</div>
-                    <div class="stat-label">Platforms change, we follow</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Scriptable</div>
-                    <div class="stat-label">Automate the boring parts</div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Automated Scanning</div>
                 </div>
             </div>
         </div>
         <div class="about-visual">
             <div class="visual-card">
-                <h4>Runs offline</h4>
-                <p>No telemetry. No API keys sent anywhere. Your cases don't become someone else's training data.</p>
+                <h4>Privacy Focused</h4>
+                <p>All processing happens locally. Your investigations stay private. We never collect, store, or transmit your search data to third parties.</p>
             </div>
             <div class="visual-card">
-                <h4>Keeps improving</h4>
-                <p>New sources get added when they're useful. Bugs get fixed. Breaks get patched when platforms update their rules.</p>
+                <h4>Always Evolving</h4>
+                <p>New data sources added monthly. Active development community. Regular updates to adapt to platform changes and emerging OSINT techniques.</p>
             </div>
         </div>
     </section>
-
     <section class="contact" id="tool">
-        <h2>Want to give it a shot?</h2>
-        <p>Works straight in the browser for now — no downloads, no setup.</p>
-        <a href="#tool" class="btn btn-primary">Open SunnyOSINT</a>
+        <h2>Ready to start gathering intelligence?</h2>
+        <p>Use SunnyOSINT directly in your browser. No installation required.</p>
+        <a href="#tool" class="btn btn-primary">Get Started</a>
     </section>
-
     <footer>
         <div class="footer-content">
             <div>
@@ -138,7 +618,7 @@
                 <li><a href="#tool">Get Started</a></li>
                 <li><a href="#">Documentation</a></li>
             </ul>
-        </div>
+         </div>
     </footer>
 </body>
 </html>
